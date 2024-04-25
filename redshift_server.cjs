@@ -17,13 +17,13 @@ const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
 
 
 app.get('/api/company_page', async (req, res) => {
-    try {
-      const queryResult = await pool.query(`SELECT name, industries, round, amount, round_valuation_usd, growth_stage, launch_year FROM coadata.master_table_stg`);
-      res.json(queryResult.rows); 
-    } catch (err) {
-      console.error('Error executing query:', err.stack);
-      res.status(500).send('Error fetching data'); 
-    }
+    try {
+      const queryResult = await pool.query(`SELECT name, industries, round, amount, round_valuation_usd, growth_stage, launch_year FROM coadata.master_table_stg`);
+      res.json(queryResult.rows); 
+    } catch (err) {
+      console.error('Error executing query:', err.stack);
+      res.status(500).send('Error fetching data'); 
+    }
   });
   
 
@@ -42,6 +42,4 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-
 
