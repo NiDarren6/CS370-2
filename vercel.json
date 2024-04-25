@@ -2,14 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "index.cjs",
+        "src": "redshift_server.cjs",
         "use": "@now/node"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "index.cjs"
+        "dest": "redshift_server.cjs"
       }
     ]
   }
