@@ -4,6 +4,10 @@
       {
         "src": "redshift_server.cjs",
         "use": "@now/node"
+      },
+      {
+        "source": "/(.*)",
+        "destination": "/"
       }
     ],
     "routes": [
@@ -11,11 +15,5 @@
         "src": "/(.*)",
         "dest": "redshift_server.cjs"
       }
-    ],
-    "rewrites": [
-      {
-          "source": "/(.*)",
-          "destination": "/"
-      }
-  ]
+    ]
   }
