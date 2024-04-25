@@ -11,5 +11,11 @@
         "src": "/(.*)",
         "dest": "redshift_server.cjs"
       }
-    ]
+    ],
+    "rewrites": [
+      {
+          "source": "/(.*)",
+          "destination": "/"
+      }
+  ]
   }
