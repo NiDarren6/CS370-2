@@ -4,6 +4,10 @@
       {
         "src": "redshift_server.cjs",
         "use": "@vercel/node"
+      },
+      {
+        "src": "index.html",
+        "use": "@vercel/node"
       }
     ],
     "rewrites": [
