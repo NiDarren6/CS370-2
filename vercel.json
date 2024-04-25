@@ -4,26 +4,16 @@
       {
         "src": "redshift_server.cjs",
         "use": "@vercel/node"
-      },
-      {
-        "src": "/",
-        "use": "@vercel/static"
       }
     ],
-    "routes": [
+    "rewrites": [
       {
         "src": "/(.*)",
         "dest": "redshift_server.cjs"
       },
       {
         "src": "/(.*)",
-        "dest": "/index.html"
-      }
-    ],
-    "rewrites":[
-      {
-        "source": "/(.*)",
-        "destination": "/"
+        "dest": "/"
       }
     ]
   }
