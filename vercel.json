@@ -8,12 +8,12 @@
     ],
     "rewrites": [
       {
-        "src": "/(.*)",
-        "dest": "redshift_server.cjs"
+        "source": "/(.*)",
+        "destination": "redshift_server.cjs"
       },
       {
-        "src": "/(.*)",
-        "dest": "/"
+        "source": "/(.*)",
+        "destination": "/"
       }
     ]
   }
