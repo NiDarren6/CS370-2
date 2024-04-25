@@ -3,7 +3,7 @@
     "builds": [
       {
         "src": "redshift_server.cjs",
-        "use": "@now/node"
+        "use": "@vercel/node"
       }
     ],
     "routes": [
