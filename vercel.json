@@ -6,8 +6,8 @@
         "use": "@now/node"
       },
       {
-        "source": "/(.*)",
-        "destination": "/"
+        "src": "/(.*)",
+        "use": "/"
       }
     ],
     "routes": [
