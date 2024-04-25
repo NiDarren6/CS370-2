@@ -10,10 +10,6 @@
       {
         "source": "/(.*)",
         "destination": "redshift_server.cjs"
-      },
-      {
-        "source": "/(.*)",
-        "destination": "/"
       }
     ]
   }
