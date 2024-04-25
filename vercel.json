@@ -4,15 +4,17 @@
       {
         "src": "redshift_server.cjs",
         "use": "@now/node"
-      },
-      {
-        "src": "/(.*)"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
         "dest": "redshift_server.cjs"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/"
       }
+
     ]
   }
