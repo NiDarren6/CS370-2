@@ -5,9 +5,56 @@
     <link rel="icon" type="image/svg+xml" href="src/assets/icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Atlanta Tech Ecosystem</title>
+    <style>
+
+      #google-map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Adjust the height of the container as needed */
+        }
+
+      /* CSS style to adjust the size of the map container */
+      #google-map {
+          width: 100%; /* Adjust the width as needed */
+          height: 500px; /* Adjust the height as needed */
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <div id="google-map" style="height: 400px;"></div>
+
+    <script>
+      // Define the initMap function
+      function initMap() {
+          // Create a map object and specify the DOM element for display
+          var map = new google.maps.Map(document.getElementById('google-map'), {
+              center: {lat: 33.7549847, lng: -84.510783},
+              zoom: 10
+          });
+      }
+
+      var script = document.createElement('script');
+
+        // Set the src attribute to the Google Maps API URL with your API key and other parameters
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap';
+
+        // Set the defer attribute to ensure that the script is executed after the HTML content is parsed
+        script.defer = true;
+
+        // Append the script element to the HTML document's head
+        document.head.appendChild(script);
+
+      </script>
+
+
+
+
   </body>
 </html>
+
+
+
