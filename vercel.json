@@ -1,19 +1,19 @@
 {
-    "version": 2,
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "redshift_server.cjs"
-      },
-      {
-        "source": "/(.*)",
-        "destination": "/index.html"
-      }
-    ],
-    "builds": [
-      {
-        "src": "redshift_server.cjs",
-        "use": "@vercel/node"
-      }
-    ]
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "redshift_server.cjs",
+      "use": "@vercel/node"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "redshift_server.cjs"
+    }
+  ]
+}
