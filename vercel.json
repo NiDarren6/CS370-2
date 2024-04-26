@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "redshift_server.cjs",
+      "src": "api/redshift_server.cjs",
       "use": "@vercel/node"
     }
   ],
@@ -10,11 +10,6 @@
     {
       "src": "^/api/(.*)",
       "dest": "/redshift_server.cjs"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "continue": true
     }
   ]
 }
