@@ -4,6 +4,10 @@
     {
       "src": "redshift_server.cjs",
       "use": "@vercel/node"
+    },
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -12,11 +16,7 @@
       "dest": "redshift_server.cjs"
     },
     {
-      "src": "^/(?!api)(.*)",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/",
+      "src": "/(.*)",
       "dest": "/index.html"
     }
   ]
