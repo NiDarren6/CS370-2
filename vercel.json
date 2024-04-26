@@ -6,14 +6,14 @@
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/api/(.*)",
+      "dest": "redshift_server.cjs"
     },
     {
-      "source": "/(.*)",
-      "destination": "redshift_server.cjs"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
