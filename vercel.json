@@ -6,8 +6,8 @@
       "use": "@vercel/node"
     },
     {
-      "src": "index.html",
-      "use": "package-lock.json"
+      "src": "/index.html",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
