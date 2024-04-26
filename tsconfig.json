@@ -1,50 +1,29 @@
-// {
-//   "compilerOptions": {
-//     "noImplicitAny": false,
-//     "target": "ES2020",
-//     "useDefineForClassFields": true,
-//     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-//     "module": "ESNext",
-//     "skipLibCheck": true,
-
-//     /* Bundler mode */
-//     "moduleResolution": "bundler",
-//     "allowImportingTsExtensions": true,
-//     "resolveJsonModule": true,
-//     "isolatedModules": true,
-//     "noEmit": true,
-//     "jsx": "react-jsx",
-//     "allowJs": true,
-
-//     /* Linting */
-//     "strict": true,
-//     "noUnusedLocals": true,
-//     "noUnusedParameters": true,
-//     "noFallthroughCasesInSwitch": true
-//   },
-//   "include": ["public/src"],
-//   "references": [{ "path": "./tsconfig.node.json" }]
-// }
-
 {
   "compilerOptions": {
+    "noImplicitAny": false,
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "moduleResolution": "node",
+    "outDir": "./public/js",
+    
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false, // Set this to false if you want to output .js files
+    "noEmit": true,
     "jsx": "react-jsx",
     "allowJs": true,
-    "outDir": "./public/js", // Set the output directory for .js files
+
+    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "build", "scripts", "webpack.config.js"]
+  "include": ["public/src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
