@@ -312,17 +312,22 @@ function ScatterChartUsageExampleWithClickEvent() {
 }
 
 
+
+
 const GoogleMap = () => {
   const googleMapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const initMap = () => {
+
+
+      
       fetch('locations.json')
         .then(response => response.json())
         .then(jsonData => {
           const map = new google.maps.Map(googleMapRef.current!, {
-            center: { lat: 33.7549847, lng: -84.510783 },
-            zoom: 13
+            center: { lat: 33.7490, lng: -84.3880 },
+            zoom: 11
           });
 
           const heatmapData = jsonData.locations.map((item: any) => new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude)));
@@ -333,6 +338,8 @@ const GoogleMap = () => {
             map: map,
             radius: 30
           });
+
+          console.log(heatmap)
         });
     };
 
@@ -363,6 +370,8 @@ const GoogleMap = () => {
 
   return <div id="google-map" ref={googleMapRef} style={{ height: '500px', width: '100%' }} />;
 };
+
+
 
 const App: React.FC = () => {
   return (
