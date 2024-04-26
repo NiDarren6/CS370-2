@@ -5,15 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="src/assets/icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Atlanta Tech Ecosystem</title>
-    <style>
 
-      /* CSS style to adjust the size of the map container */
-      #google-map {
-          width: 97%; /* Adjust the width as needed */
-          height: 500px; /* Adjust the height as needed */
-          margin: 0 auto;
-      }
-    </style>
   </head>
   <body>
     <div id="root"></div>
@@ -22,42 +14,7 @@
     <div id="google-map" style="height: 400px;"></div>
 
     <script>
-      // Define the initMap function
-      function initMap() {
 
-        fetch('locations.json')
-        .then(function(response) {
-          return response.json();
-      })
-      .then(function(jsonData) {
-        var map = new google.maps.Map(document.getElementById('google-map'), {
-            center: {lat: 33.7549847, lng: -84.510783},
-            zoom: 10
-        });
-
-        var heatmapData = jsonData.locations.map(function(item) {
-            return new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude));
-        });
-
-        var heatmap = new google.maps.visualization.HeatmapLayer({
-            data: heatmapData,
-            map: map,
-            radius: 30
-        });
-    });
-
-      }
-
-      var script = document.createElement('script');
-
-        // Set the src attribute to the Google Maps API URL with your API key and other parameters
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap&libraries=visualization';
-
-        // Set the defer attribute to ensure that the script is executed after the HTML content is parsed
-        script.defer = true;
-
-        // Append the script element to the HTML document's head
-        document.head.appendChild(script);
 
       </script>
 

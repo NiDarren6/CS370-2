@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import {
   List,
@@ -312,12 +312,61 @@ function ScatterChartUsageExampleWithClickEvent() {
 }
 
 
+const GoogleMap = () => {
+  const googleMapRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const initMap = () => {
+      fetch('locations.json')
+        .then(response => response.json())
+        .then(jsonData => {
+          const map = new google.maps.Map(googleMapRef.current!, {
+            center: { lat: 33.7549847, lng: -84.510783 },
+            zoom: 10
+          });
+
+          const heatmapData = jsonData.locations.map((item: any) => new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude)));
+
+          const heatmap = new google.maps.visualization.HeatmapLayer({
+            data: heatmapData,
+            map: map,
+            radius: 30
+          });
+        });
+    };
+
+    const scriptId = 'google-maps-script';
+    const existingScript = document.getElementById(scriptId) as HTMLScriptElement;
+
+    if (!existingScript) {
+      const script = document.createElement('script');
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap&libraries=visualization';
+      script.id = scriptId;
+      script.defer = true;
+      script.async = true;
+      document.body.appendChild(script);
+
+      script.onload = () => {
+        initMap();
+      };
+    } else if (existingScript && !window.google) {
+      existingScript.onload = () => initMap();
+    } else {
+      initMap();
+    }
+
+    return () => {
+      existingScript?.remove();
+    };
+  }, []);
+
+  return <div id="google-map" ref={googleMapRef} style={{ height: '500px', width: '100%' }} />;
+};
 
 const App: React.FC = () => {
   return (
     <Router>
-      <div>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}> {/* Ensure the div takes at least the full height of the viewport */}
         <nav className="bg-slate-900 text-white p-4">
           <ul className="flex space-x-10">
             <li>
@@ -468,6 +517,9 @@ const App: React.FC = () => {
                   <ScatterChartUsageExampleWithClickEvent />
                 </div>
 
+                <div className="map-container" style={{ marginTop: '20px'}}>
+                  <GoogleMap />
+                </div>
 
 
               </>
@@ -481,7 +533,7 @@ const App: React.FC = () => {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-        <div className="bg-gray-800 text-white p-4 text-center mt-auto rounded-lg">
+        <div className="bg-gray-800 text-white p-4 text-center mt-auto rounded-lg ">
           <p>If you have any questions, please don't hesitate to contact us at <a href="dashboardcoa@gmail.com" className="text-cyan-300 hover:underline">dashboardcoa@gmail.com</a></p>
         </div>
 
