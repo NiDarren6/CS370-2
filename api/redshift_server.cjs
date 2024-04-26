@@ -18,9 +18,9 @@ const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
   port: 5439,
 });
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../index.html'));
-});
+// app.get('/', function (req, res) {
+//   res.sendFile(path.join(__dirname, '../index.html'));
+// });
 
 app.get('/api/company_page', async (req, res) => {
     try {
