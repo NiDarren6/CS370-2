@@ -36,9 +36,9 @@ interface Company {
   launchYear: number;
 }
 
-function getMedianValue(value) {
+function getMedianValue(value: string) {
   if (value && value.includes("-")) {
-    const parts = value.split("-").map((part) => parseFloat(part.trim()));
+    const parts = value.split("-").map((part: string) => parseFloat(part.trim()));
     if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
       return (parts[0] + parts[1]) / 2;
     }
