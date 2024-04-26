@@ -4,9 +4,9 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+app.use(express.static("/index.html"))
 app.use(cors());
 app.use(express.json());
-app.use(express.static("../index.html"))
 // app.use(express.static())
 
 const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
