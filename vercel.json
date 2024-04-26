@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/redshift_server.cjs"
+      "dest": "api/redshift_server.cjs"
     }
   ]
 }
