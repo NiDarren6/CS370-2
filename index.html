@@ -7,40 +7,51 @@
     <title>Atlanta Tech Ecosystem</title>
     <style>
 
-      #google-map-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Adjust the height of the container as needed */
-        }
-
       /* CSS style to adjust the size of the map container */
       #google-map {
-          width: 100%; /* Adjust the width as needed */
+          width: 97%; /* Adjust the width as needed */
           height: 500px; /* Adjust the height as needed */
+          margin: 0 auto;
       }
     </style>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
 
+    <script type="module" src="/src/main.tsx"></script>
     <div id="google-map" style="height: 400px;"></div>
 
     <script>
       // Define the initMap function
       function initMap() {
-          // Create a map object and specify the DOM element for display
-          var map = new google.maps.Map(document.getElementById('google-map'), {
-              center: {lat: 33.7549847, lng: -84.510783},
-              zoom: 10
-          });
+
+        fetch('locations.json')
+        .then(function(response) {
+          return response.json();
+      })
+      .then(function(jsonData) {
+        var map = new google.maps.Map(document.getElementById('google-map'), {
+            center: {lat: 33.7549847, lng: -84.510783},
+            zoom: 10
+        });
+
+        var heatmapData = jsonData.locations.map(function(item) {
+            return new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude));
+        });
+
+        var heatmap = new google.maps.visualization.HeatmapLayer({
+            data: heatmapData,
+            map: map,
+            radius: 30
+        });
+    });
+
       }
 
       var script = document.createElement('script');
 
         // Set the src attribute to the Google Maps API URL with your API key and other parameters
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap';
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap&libraries=visualization';
 
         // Set the defer attribute to ensure that the script is executed after the HTML content is parsed
         script.defer = true;

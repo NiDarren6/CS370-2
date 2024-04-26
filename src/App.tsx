@@ -311,41 +311,6 @@ function ScatterChartUsageExampleWithClickEvent() {
   );
 }
 
-function initMap() {
-
-
-
-
-  var heatmap_data = [
-      new google.maps.LatLng(33.84828, -84.37315),
-      new google.maps.LatLng(33.84828, -84.37315),
-      new google.maps.LatLng(33.84828, -84.37315),
-      new google.maps.LatLng(33.84828, -84.37315),
-      new google.maps.LatLng(34.02344, -84.61666),
-      new google.maps.LatLng(33.99092305, -84.34271961),
-      new google.maps.LatLng(33.7489924, -84.3902644),
-      new google.maps.LatLng(33.9701009, -84.2215869),
-  ]
-
-
-  const centerMap = { lat: 33.7549847, lng: -84.510783 };
-
-  const mapOptions = {
-      center: centerMap,
-      zoom: 10,
-      disableDefaultUI: false
-  };
-
-  const map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
-
-
-  var heatmap = new google.maps.visualization.HeatmapLayer ({
-      data: heatmap_data
-  });
-  heatmap.setMap(map)
-}
-
-
 
 
 
@@ -502,6 +467,9 @@ const App: React.FC = () => {
                 <div className="scatter-chart-container">
                   <ScatterChartUsageExampleWithClickEvent />
                 </div>
+
+
+
               </>
 
               
