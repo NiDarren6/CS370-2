@@ -9,15 +9,12 @@
   "routes": [
     {
       "src": "^/api/(.*)",
-      "dest": "redshift_server.cjs"
+      "dest": "/redshift_server.cjs"
     },
     {
-      "src": "^/(?!api/)(.*)",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "continue": true
     }
   ]
 }
