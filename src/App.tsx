@@ -316,12 +316,15 @@ function ScatterChartUsageExampleWithClickEvent() {
 
 const GoogleMap = () => {
   const googleMapRef = useRef<HTMLDivElement>(null);
-
+ 
+ 
   useEffect(() => {
     const initMap = () => {
-
-
-      
+ 
+ 
+ 
+ 
+     
       fetch('locations.json')
         .then(response => response.json())
         .then(jsonData => {
@@ -329,23 +332,28 @@ const GoogleMap = () => {
             center: { lat: 33.7490, lng: -84.3880 },
             zoom: 11
           });
-
+ 
+ 
           const heatmapData = jsonData.locations.map((item: any) => new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude)));
           console.log("Number of data points in heatmap:", heatmapData.length);
-
+ 
+ 
           const heatmap = new google.maps.visualization.HeatmapLayer({
             data: heatmapData,
             map: map,
             radius: 30
           });
-
+ 
+ 
           console.log(heatmap)
         });
     };
-
+ 
+ 
     const scriptId = 'google-maps-script';
     const existingScript = document.getElementById(scriptId) as HTMLScriptElement;
-
+ 
+ 
     if (!existingScript) {
       const script = document.createElement('script');
       script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap&libraries=visualization';
@@ -353,7 +361,8 @@ const GoogleMap = () => {
       script.defer = true;
       script.async = true;
       document.body.appendChild(script);
-
+ 
+ 
       script.onload = () => {
         initMap();
       };
@@ -362,14 +371,17 @@ const GoogleMap = () => {
     } else {
       initMap();
     }
-
+ 
+ 
     return () => {
       existingScript?.remove();
     };
   }, []);
-
+ 
+ 
   return <div id="google-map" ref={googleMapRef} style={{ height: '500px', width: '100%' }} />;
-};
+ };
+ 
 
 
 
