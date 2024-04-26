@@ -7,7 +7,7 @@
     },
     {
       "src": "index.html",
-      "use": "package.json"
+      "use": "package-lock.json"
     }
   ],
   "routes": [
