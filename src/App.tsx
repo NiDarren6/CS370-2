@@ -322,10 +322,11 @@ const GoogleMap = () => {
         .then(jsonData => {
           const map = new google.maps.Map(googleMapRef.current!, {
             center: { lat: 33.7549847, lng: -84.510783 },
-            zoom: 10
+            zoom: 13
           });
 
           const heatmapData = jsonData.locations.map((item: any) => new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude)));
+          console.log("Number of data points in heatmap:", heatmapData.length);
 
           const heatmap = new google.maps.visualization.HeatmapLayer({
             data: heatmapData,
