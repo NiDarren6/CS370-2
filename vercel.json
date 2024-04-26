@@ -8,12 +8,16 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "^/api/(.*)",
       "dest": "redshift_server.cjs"
     },
     {
-      "src": "/(.*)",
-      "dest": "/"
+      "src": "^/(?!api)(.*)",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
     }
   ]
 }
