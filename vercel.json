@@ -4,17 +4,16 @@
     {
       "src": "redshift_server.cjs",
       "use": "@vercel/node"
+    },
+    {
+      "src": "/index.html",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "^/api/(.*)",
       "dest": "redshift_server.cjs"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "continue": true
     }
   ]
 }
