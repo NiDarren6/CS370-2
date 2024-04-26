@@ -2,18 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/**/*.cjs",
+      "src": "redshift_server.cjs",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "api/$1"
+      "src": "^/api/(.*)",
+      "dest": "redshift_server.cjs"
     },
     {
-      "src": "/(.*)",
-      "dest": "/"
+      "src": "^/(?!api).*",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
     }
   ]
 }
