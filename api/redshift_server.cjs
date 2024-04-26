@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(express.static("/"));
+app.use(express.static(path.join(__dirname, "../index.html")));
 app.use(cors());
 app.use(express.json());
 // app.use(express.static())
@@ -19,7 +19,7 @@ const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
 });
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 app.get('/api/company_page', async (req, res) => {
