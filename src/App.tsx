@@ -14,7 +14,7 @@ import {
   Select,
   SelectItem,
 } from "@tremor/react";
-import DataContext, {DataProvider} from './DataContext';
+import DataContext, { DataProvider } from "./DataContext";
 import Companies from "./Companies";
 import AnnualReport from "./AnnualReport";
 import AboutUs from "./AboutUs";
@@ -153,51 +153,65 @@ function classNames(...classes: string[]) {
 //   },
 // ];
 const GoogleMap = () => {
-    const googleMapRef = useRef<HTMLDivElement>(null);
-  
-    useEffect(() => {
-      const initMap = () => {
-      
-        fetch('locations.json')
-          .then(response => response.json())
-          .then(jsonData => {
-            const map = new google.maps.Map(googleMapRef.current!, {
-              center: { lat: 33.7490, lng: -84.3880 },
-              zoom: 11
-            });
-            const heatmapData = jsonData.locations.map((item: any) => new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude)));
-            console.log("Number of data points in heatmap:", heatmapData.length);
-            const heatmap = new google.maps.visualization.HeatmapLayer({
-              data: heatmapData,
-              map: map,
-              radius: 30
-            });
-            console.log(heatmap)
-          });
-      };
-      const scriptId = 'google-maps-script';
-      const existingScript = document.getElementById(scriptId) as HTMLScriptElement;
-      if (!existingScript) {
-        const script = document.createElement('script');
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap&libraries=visualization';
-        script.id = scriptId;
-        script.defer = true;
-        script.async = true;
-        document.body.appendChild(script);
-        script.onload = () => {
-          initMap();
-        };
-      } else if (existingScript && !window.google) {
-        existingScript.onload = () => initMap();
-      } else {
-        initMap();
-      }
-      return () => {
-        existingScript?.remove();
-      };
-    }, []);
-    return <div id="google-map" ref={googleMapRef} style={{ height: '500px', width: '100%' }} />;
-   };
+  const googleMapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const initMap = () => {
+      fetch("locations.json")
+        .then((response) => response.json())
+        .then((jsonData) => {
+          const map = new google.maps.Map(googleMapRef.current!, {
+            center: { lat: 33.749, lng: -84.388 },
+            zoom: 11,
+          });
+          const heatmapData = jsonData.locations.map(
+            (item: any) =>
+              new google.maps.LatLng(
+                parseFloat(item.latitude),
+                parseFloat(item.longitude)
+              )
+          );
+          console.log("Number of data points in heatmap:", heatmapData.length);
+          const heatmap = new google.maps.visualization.HeatmapLayer({
+            data: heatmapData,
+            map: map,
+            radius: 30,
+          });
+          console.log(heatmap);
+        });
+    };
+    const scriptId = "google-maps-script";
+    const existingScript = document.getElementById(
+      scriptId
+    ) as HTMLScriptElement;
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.src =
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap&libraries=visualization";
+      script.id = scriptId;
+      script.defer = true;
+      script.async = true;
+      document.body.appendChild(script);
+      script.onload = () => {
+        initMap();
+      };
+    } else if (existingScript && !window.google) {
+      existingScript.onload = () => initMap();
+    } else {
+      initMap();
+    }
+    return () => {
+      existingScript?.remove();
+    };
+  }, []);
+  return (
+    <div
+      id="google-map"
+      ref={googleMapRef}
+      style={{ height: "500px", width: "100%" }}
+    />
+  );
+};
 
 // some bs data i made up
 const startupsByYear = [
@@ -291,25 +305,27 @@ const cardData = [
 
 const ScatterChartUsageExampleWithClickEvent = () => {
   const data = useContext(DataContext);
-  const [xAxis, setXAxis] = useState('totalFunding');
-  const [yAxis, setYAxis] = useState('launchYear');
-  const [size, setSize] = useState('amount');
+  const [xAxis, setXAxis] = useState("totalFunding");
+  const [yAxis, setYAxis] = useState("launchYear");
+  const [size, setSize] = useState("amount");
   //https://retool.com/blog/filtering-data-in-react-filter-map-and-for-loops - explanation on how to filter data
   const updateChartData = (jsonData) => {
-    return jsonData.filter(item => 
-      item[xAxis] != null && item[yAxis] != null && item[size] != null
-    ).map((item, index) => ({
-      ...item,
-      x: item[xAxis],
-      y: item[yAxis],
-      size: item[size] || 1,
-      uniqueKey: `point-${index}`
-    }));
+    return jsonData
+      .filter(
+        (item) =>
+          item[xAxis] != null && item[yAxis] != null && item[size] != null
+      )
+      .map((item, index) => ({
+        ...item,
+        x: item[xAxis],
+        y: item[yAxis],
+        size: item[size] || 1,
+        uniqueKey: `point-${index}`,
+      }));
   };
 
   const chartData = data ? updateChartData(data) : [];
 
-  
   const axisOptions = {
     "Ecosystem Value": "current_company_valuation",
     "Funding Rounds": "total_rounds_number",
@@ -317,7 +333,7 @@ const ScatterChartUsageExampleWithClickEvent = () => {
     // "Number of Startups per Year": "numberOfStartups",
     // "Minority-founded Startups": "minorityStartups",
     // "Type of Startup": "startupType",
-    "Funding Year" : "launch_year",
+    "Funding Year": "launch_year",
     "Round Evaluation": "round_valuation_usd",
     // GDP: "GDP",
     // "Life expectancy": "Life expectancy",
@@ -366,18 +382,14 @@ const ScatterChartUsageExampleWithClickEvent = () => {
         minYValue={0}
         showLegend={false}
         valueFormatter={{
-        //   x: (amount) => `$${(amount / 1000).toFixed(1)}K`,
-        y: (amount) => `${amount/100000} $`,
-        //   size: (amount) => `${(amount / 1000000).toFixed(1)}M people`,
+          //   x: (amount) => `$${(amount / 1000).toFixed(1)}K`,
+          y: (amount) => `${amount / 100000} $`,
+          //   size: (amount) => `${(amount / 1000000).toFixed(1)}M people`,
         }}
       />
     </Card>
   );
-}
-
-
-
-
+};
 
 const App: React.FC = () => {
   return (
@@ -393,7 +405,7 @@ const App: React.FC = () => {
                 <Link to="/companies">Companies</Link>
               </li>
               <li>
-                <Link to="/annual-report">Annual Report</Link>
+                <Link to="/annual-report">Why Atlanta?</Link>
               </li>
               <li>
                 <Link to="/about-us">About Us</Link>
@@ -510,7 +522,13 @@ const App: React.FC = () => {
                           index="industry"
                           variant="pie"
                           valueFormatter={percentFormatter}
-                          colors={["blue", "cyan", "indigo", "violet", "fuchsia"]}
+                          colors={[
+                            "blue",
+                            "cyan",
+                            "indigo",
+                            "violet",
+                            "fuchsia",
+                          ]}
                           className="mt-2 h-60"
                         />
                       </div>
@@ -524,7 +542,13 @@ const App: React.FC = () => {
                             "Education",
                             "Other",
                           ]}
-                          colors={["blue", "cyan", "indigo", "violet", "fuchsia"]}
+                          colors={[
+                            "blue",
+                            "cyan",
+                            "indigo",
+                            "violet",
+                            "fuchsia",
+                          ]}
                           className="max-w-xs text-center"
                         />
                       </div>
@@ -533,8 +557,8 @@ const App: React.FC = () => {
                   <div className="scatter-chart-container">
                     <ScatterChartUsageExampleWithClickEvent />
                   </div>
-                  <div className="map-container" style={{ marginTop: '20px'}}>
-                 <GoogleMap />
+                  <div className="map-container" style={{ marginTop: "20px" }}>
+                    <GoogleMap />
                   </div>
                 </>
               }
@@ -545,9 +569,16 @@ const App: React.FC = () => {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
           <div className="bg-gray-800 text-white p-4 text-center mt-auto rounded-lg">
-            <p>If you have any questions, please don't hesitate to contact us at <a href="mailto: dashboardcoa@gmail.com" className="text-cyan-300 hover:underline">dashboardcoa@gmail.com</a></p>
+            <p>
+              If you have any questions, please don't hesitate to contact us at{" "}
+              <a
+                href="mailto: dashboardcoa@gmail.com"
+                className="text-cyan-300 hover:underline"
+              >
+                dashboardcoa@gmail.com
+              </a>
+            </p>
           </div>
-
         </div>
       </Router>
     </DataProvider>
