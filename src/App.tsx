@@ -152,52 +152,64 @@ function classNames(...classes: string[]) {
 //     Population: 15777451,
 //   },
 // ];
+
+
 const GoogleMap = () => {
-    const googleMapRef = useRef<HTMLDivElement>(null);
-  
-    useEffect(() => {
-      const initMap = () => {
-      
-        fetch('locations.json')
-          .then(response => response.json())
-          .then(jsonData => {
-            const map = new google.maps.Map(googleMapRef.current!, {
-              center: { lat: 33.7490, lng: -84.3880 },
-              zoom: 11
-            });
-            const heatmapData = jsonData.locations.map((item: any) => new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude)));
-            console.log("Number of data points in heatmap:", heatmapData.length);
-            const heatmap = new google.maps.visualization.HeatmapLayer({
-              data: heatmapData,
-              map: map,
-              radius: 30
-            });
-            console.log(heatmap)
+      const googleMapRef = useRef<HTMLDivElement>(null);
+    
+      useEffect(() => {
+      const initMap = async () => {
+        try {
+          const response = await fetch('/api/map');
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const jsonData = await response.json();
+          if (!jsonData || jsonData.length === 0) {
+            throw new Error('No data received');
+          }
+
+          const map = new google.maps.Map(googleMapRef.current!, {
+            center: { lat: 33.8505, lng: -84.3719 },
+            zoom: 11
           });
+          const heatmapData = jsonData.map(item => new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude)));
+          console.log("Number of data points in heatmap:", heatmapData.length);
+          console.log(jsonData);
+          
+          new google.maps.visualization.HeatmapLayer({
+            data: heatmapData,
+            map: map,
+            radius: 70,
+            opacity: 0.8
+          });
+        } catch (error) {
+          console.error('Failed to load heatmap data:', error);
+        }
       };
-      const scriptId = 'google-maps-script';
-      const existingScript = document.getElementById(scriptId) as HTMLScriptElement;
-      if (!existingScript) {
-        const script = document.createElement('script');
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap&libraries=visualization';
-        script.id = scriptId;
-        script.defer = true;
-        script.async = true;
-        document.body.appendChild(script);
-        script.onload = () => {
+        const scriptId = 'google-maps-script';
+        const existingScript = document.getElementById(scriptId) as HTMLScriptElement;
+        if (!existingScript) {
+          const script = document.createElement('script');
+          script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap&libraries=visualization';
+          script.id = scriptId;
+          script.defer = true;
+          script.async = true;
+          document.body.appendChild(script);
+          script.onload = () => {
+            initMap();
+          };
+        } else if (existingScript && !window.google) {
+          existingScript.onload = () => initMap();
+        } else {
           initMap();
+        }
+        return () => {
+          existingScript?.remove();
         };
-      } else if (existingScript && !window.google) {
-        existingScript.onload = () => initMap();
-      } else {
-        initMap();
-      }
-      return () => {
-        existingScript?.remove();
-      };
-    }, []);
-    return <div id="google-map" ref={googleMapRef} style={{ height: '500px', width: '100%' }} />;
-   };
+      }, []);
+      return <div id="google-map" ref={googleMapRef} style={{ height: '500px', width: '100%' }} />;
+     };
 
 // some bs data i made up
 const startupsByYear = [
