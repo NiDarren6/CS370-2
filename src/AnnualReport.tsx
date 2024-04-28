@@ -33,7 +33,7 @@ const AnnualReport: React.FC = () => {
           </p>
           <div>
             <img
-              src="/src/assets/atl_skyline.jpg"
+              src="https://www.hilldrup.com/wp-content/uploads/2021/12/cameron-venti-IDb-PwCZ58o-unsplash-scaled.jpg"
               className="mb-4 w-full h-auto"
             />
           </div>
