@@ -24,6 +24,7 @@ No log in or sign up is required. Our information is readily available. All grap
 ## Demo
 
 Dashboard: https://co-a-startup-dashboard-r4t2-2.vercel.app/
+
 Video:
 
 ## Pages
