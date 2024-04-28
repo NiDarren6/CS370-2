@@ -294,7 +294,7 @@ const ScatterChartUsageExampleWithClickEvent = () => {
   const [xAxis, setXAxis] = useState('totalFunding');
   const [yAxis, setYAxis] = useState('launchYear');
   const [size, setSize] = useState('amount');
-
+  //https://retool.com/blog/filtering-data-in-react-filter-map-and-for-loops - explanation on how to filter data
   const updateChartData = (jsonData) => {
     return jsonData.filter(item => 
       item[xAxis] != null && item[yAxis] != null && item[size] != null
