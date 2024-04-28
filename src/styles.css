@@ -26,21 +26,18 @@ body {
 }
 
 .sub-sector .sector {
-    background-color: #e8e8e8;
     margin-bottom: 1rem;
     padding: 1rem;
     border-radius: 5px;
 }
 
 .reasons-to-move .reason {
-    background-color: #e8e8e8;
     margin-bottom: 1rem;
     padding: 1rem;
     border-radius: 5px;
 }
 
 .ecosystem-numbers, .highlights {
-    background-color: #e8e8e8;
     padding: 1rem;
     border-radius: 5px;
 }
