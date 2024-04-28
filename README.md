@@ -3,7 +3,7 @@
 This project was completed in collaboration with City of Atlanta and Emory's Center of AI, for Emory's 370 - Computer Practicum course.
 
 Group Members: Aaron Zaiman, Alex Forbes, Darren Ni, Dickson Leong, Doron Czarny, Lachlan Spangler, and Yasasvi Josyula.
-
+test
 ## Project Overview
 For our semester-long project, our team decided to team up with the City of Atlanta to present them a dynamic dashboard of Atlanta's startup ecosystem. This dashboard will provide investors and students with high-level information, dynamic graphs and maps and a huge database of vital statistics to best inform and advise those interested. Through weeks of meeting with the CoA and Emory's Center of AI, we drafted a Spec Document and met all their requirements for metrics, graphs, and features. The data was provided from the City of Atlanta through dealroom, which we then filtered and uploaded to a master database on redshift. Our dashboard currently has a Homepage which displays Ecosystem Value (valuations), Funding rounds, Total Funding, Startups per year, Minority-founded, Type of Startup, and Amount raised this year through dynamic graphs and scatterplots. Additionally, it has a page for Companies (displaying all startups with a searchbar), a interactive heat map, and an About Us page. 
 

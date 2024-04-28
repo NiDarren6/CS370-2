@@ -122,7 +122,7 @@ export default function Companies() {
         }
         const data = await response.json();
         setCompanies(data);
-        localStorage.setItem("companies", JSON.stringify(data));
+        // localStorage.setItem("companies", JSON.stringify(data));
       } catch (error) {
         console.error("Failed to fetch companies", error);
       }
