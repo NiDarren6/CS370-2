@@ -84,11 +84,12 @@ const GoogleMap = () => {
 
 // data queried from database
 const startupsByYear = [
+  { year: "2018", "Start-ups": 451 },
   { year: "2019", "Start-ups": 274 },
-  { year: "2020", "Start-ups": 540 },
-  { year: "2021", "Start-ups": 730 },
-  { year: "2022", "Start-ups": 783 },
-  { year: "2023", "Start-ups": 824 },
+  { year: "2020", "Start-ups": 266 },
+  { year: "2021", "Start-ups": 190 },
+  { year: "2022", "Start-ups": 53 },
+  { year: "2023", "Start-ups": 21 },
 ];
 const startupsByIndustry = [
   { industry: "Healthcare", value: 23.2 },
@@ -120,10 +121,10 @@ const cardData = [
     changeType: "positive",
   },
   {
-    name: "Average Software Engineer Salary",
-    stat: "$104k",
-    change: "+9.4% YoY",
-    changeType: "positive",
+    name: "Number of Unicorns",
+    stat: "7",
+    // change: "+9.4% YoY",
+    // changeType: "positive",
   },
 ];
 

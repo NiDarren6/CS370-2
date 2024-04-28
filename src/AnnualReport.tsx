@@ -135,7 +135,7 @@ const AnnualReport: React.FC = () => {
         </div>
       </div>
       <footer className="text-center mt-6">
-        <p className="text-sm">Credits: Boston Consulting Group</p>
+      <p className="text-sm">Credits: Boston Consulting Group, Startup Genome, and DealRoom</p>
       </footer>
     </div>
   );
