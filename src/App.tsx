@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-// https://www.w3schools.com/react/react_usecontext.asp - how to use useEffect
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import {
   List,
@@ -14,7 +13,7 @@ import {
   Select,
   SelectItem,
 } from "@tremor/react";
-import DataContext, {DataProvider} from './DataContext';
+import DataContext, { DataProvider } from "./DataContext";
 import Companies from "./Companies";
 import AnnualReport from "./AnnualReport";
 import AboutUs from "./AboutUs";
@@ -303,25 +302,27 @@ const cardData = [
 
 const ScatterChartUsageExampleWithClickEvent = () => {
   const data = useContext(DataContext);
-  const [xAxis, setXAxis] = useState('totalFunding');
-  const [yAxis, setYAxis] = useState('launchYear');
-  const [size, setSize] = useState('amount');
+  const [xAxis, setXAxis] = useState("totalFunding");
+  const [yAxis, setYAxis] = useState("launchYear");
+  const [size, setSize] = useState("amount");
   //https://retool.com/blog/filtering-data-in-react-filter-map-and-for-loops - explanation on how to filter data
   const updateChartData = (jsonData) => {
-    return jsonData.filter(item => 
-      item[xAxis] != null && item[yAxis] != null && item[size] != null
-    ).map((item, index) => ({
-      ...item,
-      x: item[xAxis],
-      y: item[yAxis],
-      size: item[size] || 1,
-      uniqueKey: `point-${index}`
-    }));
+    return jsonData
+      .filter(
+        (item) =>
+          item[xAxis] != null && item[yAxis] != null && item[size] != null
+      )
+      .map((item, index) => ({
+        ...item,
+        x: item[xAxis],
+        y: item[yAxis],
+        size: item[size] || 1,
+        uniqueKey: `point-${index}`,
+      }));
   };
 
   const chartData = data ? updateChartData(data) : [];
 
-  
   const axisOptions = {
     "Ecosystem Value": "current_company_valuation",
     "Funding Rounds": "total_rounds_number",
@@ -329,7 +330,7 @@ const ScatterChartUsageExampleWithClickEvent = () => {
     // "Number of Startups per Year": "numberOfStartups",
     // "Minority-founded Startups": "minorityStartups",
     // "Type of Startup": "startupType",
-    "Funding Year" : "launch_year",
+    "Funding Year": "launch_year",
     "Round Evaluation": "round_valuation_usd",
     // GDP: "GDP",
     // "Life expectancy": "Life expectancy",
@@ -337,8 +338,8 @@ const ScatterChartUsageExampleWithClickEvent = () => {
   };
 
   return (
-    <Card>
-      <div style={{ marginBottom: 16, color: "white" }}>
+    <Card className="bg-slate-900 text-white">
+      <div style={{ marginBottom: 16 }}>
         <label>X-axis:</label>
         <Select value={xAxis} onValueChange={setXAxis}>
           {Object.entries(axisOptions).map(([label, value]) => (
@@ -367,7 +368,7 @@ const ScatterChartUsageExampleWithClickEvent = () => {
         </Select>
       </div>
       <ScatterChart
-        className="-ml-2 mt-6 h-80"
+        className="-ml-2 mt-6 h-80 bg-slate-900"
         yAxisWidth={50}
         data={chartData}
         category="name"
@@ -378,18 +379,14 @@ const ScatterChartUsageExampleWithClickEvent = () => {
         minYValue={0}
         showLegend={false}
         valueFormatter={{
-        //   x: (amount) => `$${(amount / 1000).toFixed(1)}K`,
-        y: (amount) => `${amount/100000} $`,
-        //   size: (amount) => `${(amount / 1000000).toFixed(1)}M people`,
+          //   x: (amount) => `$${(amount / 1000).toFixed(1)}K`,
+          y: (amount) => `${amount / 100000} $`,
+          //   size: (amount) => `${(amount / 1000000).toFixed(1)}M people`,
         }}
       />
     </Card>
   );
-}
-
-
-
-
+};
 
 const App: React.FC = () => {
   return (
@@ -423,21 +420,22 @@ const App: React.FC = () => {
                       Atlanta Tech Ecosystem Dashboard
                     </h1>
                   </div>
+
                   <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {cardData.map((item) => (
-                      <Card key={item.name} className="mb-5">
-                        <p className="text-tremor-default font-medium text-tremor-content dark:text-dark-tremor-content">
+                      <Card key={item.name} className="mb-5 bg-slate-900">
+                        <p className="text-tremor-default font-medium text-dark-tremor-content">
                           {item.name}
                         </p>
                         <div className="mt-2 flex items-baseline space-x-2.5">
-                          <p className="text-tremor-metric font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
+                          <p className="text-tremor-metric font-semibold text-dark-tremor-content-strong">
                             {item.stat}
                           </p>
                           <span
                             className={classNames(
                               item.changeType === "positive"
-                                ? "text-emerald-700 dark:text-emerald-500"
-                                : "text-red-700 dark:text-red-500",
+                                ? "text-emerald-500"
+                                : "text-red-500",
                               "text-tremor-default font-medium"
                             )}
                           >
@@ -503,7 +501,7 @@ const App: React.FC = () => {
                               />
                               <span>{item.name}</span>
                             </div>
-                            <span className="font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong">
+                            <span className="font-medium text-dark-tremor-content-strong">
                               {valueFormatter(item.value)}
                             </span>
                           </ListItem>
@@ -522,7 +520,13 @@ const App: React.FC = () => {
                           index="industry"
                           variant="pie"
                           valueFormatter={percentFormatter}
-                          colors={["blue", "cyan", "indigo", "violet", "fuchsia"]}
+                          colors={[
+                            "blue",
+                            "cyan",
+                            "indigo",
+                            "violet",
+                            "fuchsia",
+                          ]}
                           className="mt-2 h-60"
                         />
                       </div>
@@ -536,7 +540,13 @@ const App: React.FC = () => {
                             "Education",
                             "Other",
                           ]}
-                          colors={["blue", "cyan", "indigo", "violet", "fuchsia"]}
+                          colors={[
+                            "blue",
+                            "cyan",
+                            "indigo",
+                            "violet",
+                            "fuchsia",
+                          ]}
                           className="max-w-xs text-center"
                         />
                       </div>
@@ -545,8 +555,8 @@ const App: React.FC = () => {
                   <div className="scatter-chart-container">
                     <ScatterChartUsageExampleWithClickEvent />
                   </div>
-                  <div className="map-container" style={{ marginTop: '20px'}}>
-                 <GoogleMap />
+                  <div className="map-container" style={{ marginTop: "20px" }}>
+                    <GoogleMap />
                   </div>
                 </>
               }
@@ -557,9 +567,16 @@ const App: React.FC = () => {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
           <div className="bg-gray-800 text-white p-4 text-center mt-auto rounded-lg">
-            <p>If you have any questions, please don't hesitate to contact us at <a href="mailto: dashboardcoa@gmail.com" className="text-cyan-300 hover:underline">dashboardcoa@gmail.com</a></p>
+            <p>
+              If you have any questions, please don't hesitate to contact us at{" "}
+              <a
+                href="mailto: dashboardcoa@gmail.com"
+                className="text-cyan-300 hover:underline"
+              >
+                dashboardcoa@gmail.com
+              </a>
+            </p>
           </div>
-
         </div>
       </Router>
     </DataProvider>
