@@ -1,11 +1,23 @@
 const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
-require('dotenv').config();
+const bodyParser = require('body-parser');
+const path = require('path');
+
+// const urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+// app.use(express.static('public'));
+
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+// app.use(express.static('public'));
+
+
+
+
 
 const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
   user: 'coa_datalabs',
@@ -14,6 +26,10 @@ const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
   password: 'CoADashboard#!ATL1',
   port: 5439,
 });
+
+// app.get('/', function (req, res) {
+// 	res.sendFile(path.join(__dirname, '..', 'index.html'));
+// });
 
 
 app.get('/api/company_page', async (req, res) => {
@@ -43,5 +59,5 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-
+module.exports = app;
 
