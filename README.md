@@ -8,7 +8,7 @@ test
 For our semester-long project, our team decided to team up with the City of Atlanta to present them a dynamic dashboard of Atlanta's startup ecosystem. This dashboard will provide investors and students with high-level information, dynamic graphs and maps and a huge database of vital statistics to best inform and advise those interested. Through weeks of meeting with the CoA and Emory's Center of AI, we drafted a Spec Document and met all their requirements for metrics, graphs, and features. The data was provided from the City of Atlanta through dealroom, which we then filtered and uploaded to a master database on redshift. Our dashboard currently has a Homepage which displays Ecosystem Value (valuations), Funding rounds, Total Funding, Startups per year, Minority-founded, Type of Startup, and Amount raised this year through dynamic graphs and scatterplots. Additionally, it has a page for Companies (displaying all startups with a searchbar), a interactive heat map, and an About Us page. 
 
 ## Installation Instructions
-Visit the dashboard at: https://co-a-startup-dashboard.vercel.app/
+Visit the dashboard at: [https://co-a-startup-dashboard-r4t2-2.vercel.app/](https://co-a-startup-dashboard-r4t2-2.vercel.app/)
 To clone the repo, use git clone https://github.com/NiDarren6/CoA_Startup_Dashboard - Then run npm build then npm run in terminal
 
 ## Usage
