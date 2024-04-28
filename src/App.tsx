@@ -340,8 +340,8 @@ const ScatterChartUsageExampleWithClickEvent = () => {
   };
 
   return (
-    <Card>
-      <div style={{ marginBottom: 16, color: "white" }}>
+    <Card className="bg-slate-900 text-white">
+      <div style={{ marginBottom: 16 }}>
         <label>X-axis:</label>
         <Select value={xAxis} onValueChange={setXAxis}>
           {Object.entries(axisOptions).map(([label, value]) => (
@@ -370,7 +370,7 @@ const ScatterChartUsageExampleWithClickEvent = () => {
         </Select>
       </div>
       <ScatterChart
-        className="-ml-2 mt-6 h-80"
+        className="-ml-2 mt-6 h-80 bg-slate-900"
         yAxisWidth={50}
         data={chartData}
         category="name"
@@ -422,9 +422,10 @@ const App: React.FC = () => {
                       Atlanta Tech Ecosystem Dashboard
                     </h1>
                   </div>
+
                   <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {cardData.map((item) => (
-                      <Card key={item.name} className="mb-5">
+                      <Card key={item.name} className="mb-5 bg-slate-900">
                         <p className="text-tremor-default font-medium text-dark-tremor-content">
                           {item.name}
                         </p>
