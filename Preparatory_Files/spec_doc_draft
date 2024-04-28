@@ -1,0 +1,66 @@
+Introduction
+
+This document specifies the framework for a project aimed at developing a comprehensive analysis and visualization of the startup ecosystem in Atlanta. It aims to provide critical insights for the City of Atlanta and potential investors, focusing on the economic environment, growth prospects, tracking education establishments, and investment opportunities.
+Project Objectives
+
+
+Research Report Objectives
+
+Ecosystem Mapping: Identify and define the key components of Atlanta's startup ecosystem.
+Metrics Definition: Establish key metrics to measure the ecosystem's health and growth - (Will be more hashed out after faculty 1-1s).
+Benchmarking: Compare Atlanta's ecosystem against national and global standards i.e. cities such as New York, Chicago, etc. existing dashboards
+Problem Identification: Highlight challenges within the ecosystem.
+Success Publication: Showcase the ecosystem's achievements and strengths.
+
+Dashboard Objectives
+
+Economic Indicators Visualization: Provide a dynamic overview of Atlanta's economic metrics.
+Growth Trends Analysis: Highlight trends in sectorial growth and startup performance.
+Investment Opportunities Identification: Showcase emerging sectors with high ROI potential.
+
+
+Methodology:
+
+Data Collection
+
+Secondary Research: Review existing studies and reports such as the BCG report.
+Potential Data Sources: Utilize data sources provided by CoA (dealroom) , RICE center (recommended by Dr. Lennon)
+Primary Research: Conduct surveys and interviews with subject matter experts.
+
+Potential Data Analysis
+
+Benchmarking Analysis: Compare Atlanta's metrics with those of similar cities.
+SWOT Analysis: Evaluate strengths, weaknesses, opportunities, and threats within the ecosystem
+Statistical Analysis: Employ data science techniques to uncover trends and patterns
+
+Deliverables
+
+Research Report
+In-depth Analysis: A comprehensive report identifying key metrics to track the Atlanta tech ecosystem.
+Potential Recommendations: Strategic advice for the City of Atlanta to enhance the ecosystem.
+
+Metrics Defined
+Ecosystem Value (valuations)
+Ecosystem value through valuations indicates the perceived worth of startups within the area, reflecting investor confidence, market potential, and overall health of the entrepreneurial ecosystem.
+Funding rounds (how best to measure growth)
+The number and size of funding rounds highlight the growth trajectory of startups, showcasing their ability to attract capital, scale operations, and execute their business strategies effectively.
+Total funding (VC/Acquisitions)
+Cumulative funding received signifies the financial backing and support startups garner, offering insights into their potential for market disruption, growth, and long-term viability.
+Employees numbers (Jobs created)
+Increasing employee numbers demonstrate the startup's role in job creation, contributing to economic prosperity and indicating the scalability of their operations within the area.
+Number of startups per year
+The annual count of startups reflects the vibrancy and dynamism of the local entrepreneurial ecosystem, indicating its attractiveness to aspiring entrepreneurs, investors, and talent.
+Minority-founded startups
+Tracking minority-founded startups reveals the diversity and inclusivity of the area's entrepreneurial landscape, fostering innovation, social equity, and economic empowerment within underrepresented communities.
+Startups based on location within Atlanta (would have to do manually)
+Analyzing the geographical distribution of startups within Atlanta provides insights into regional economic development, resource allocation, and the city's role as a startup hub, facilitating targeted support and infrastructure investments.
+Type of startups
+Understanding the types of startups emerging in the area offers valuable insights into industry trends, market opportunities, and areas of innovation, guiding strategic initiatives, policy decisions, and resource allocation to support specific sectors.
+
+Dashboard
+Dashboard: A web-based platform displaying key metrics and insights - see tech infrastructure for technologies planned on being used.
+Customization Features: Tools allowing user customization to filter data based on specific criteria.
+
+Timeline and Milestones
+March 8th - First Draft of Spec Doc
+March 13th - Finish faculty interviews and identify key metrics

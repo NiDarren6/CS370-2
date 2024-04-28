@@ -23,135 +23,6 @@ import "./App.css";
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
-// const chartdata = [
-//   {
-//     Country: "Argentina",
-//     "Life expectancy": 76.3,
-//     GDP: 13467.1236,
-//     Population: 43417765,
-//   },
-//   {
-//     Country: "Australia",
-//     "Life expectancy": 82.8,
-//     GDP: 56554.3876,
-//     Population: 23789338,
-//   },
-//   {
-//     Country: "Austria",
-//     "Life expectancy": 81.5,
-//     GDP: 43665.947,
-//     Population: 8633169,
-//   },
-//   {
-//     Country: "Brazil",
-//     "Life expectancy": 75,
-//     GDP: 8757.2622,
-//     Population: 2596218,
-//   },
-//   {
-//     Country: "Estonia",
-//     "Life expectancy": 77.6,
-//     GDP: 1774.9291,
-//     Population: 131547,
-//   },
-//   {
-//     Country: "Ethiopia",
-//     "Life expectancy": 64.8,
-//     GDP: 645.4637627,
-//     Population: 9987333,
-//   },
-//   {
-//     Country: "Germany",
-//     "Life expectancy": 81,
-//     GDP: 41176.88158,
-//     Population: 81686611,
-//   },
-//   {
-//     Country: "Honduras",
-//     "Life expectancy": 74.6,
-//     GDP: 2326.15856,
-//     Population: 896829,
-//   },
-//   {
-//     Country: "Italy",
-//     "Life expectancy": 82.7,
-//     GDP: 349.14755,
-//     Population: 673582,
-//   },
-//   {
-//     Country: "Lithuania",
-//     "Life expectancy": 73.6,
-//     GDP: 14252.42853,
-//     Population: 29491,
-//   },
-//   {
-//     Country: "Mexico",
-//     "Life expectancy": 76.7,
-//     GDP: 9143.128494,
-//     Population: 12589949,
-//   },
-//   {
-//     Country: "Norway",
-//     "Life expectancy": 81.8,
-//     GDP: 7455.24654,
-//     Population: 518867,
-//   },
-//   {
-//     Country: "Philippines",
-//     "Life expectancy": 68.5,
-//     GDP: 2878.33837,
-//     Population: 11716359,
-//   },
-//   {
-//     Country: "Samoa",
-//     "Life expectancy": 74,
-//     GDP: 4149.363444,
-//     Population: 193759,
-//   },
-//   {
-//     Country: "Sao Tome and Principe",
-//     "Life expectancy": 67.5,
-//     GDP: 1624.63963,
-//     Population: 195553,
-//   },
-//   {
-//     Country: "Senegal",
-//     "Life expectancy": 66.7,
-//     GDP: 98.7256145,
-//     Population: 14976994,
-//   },
-//   {
-//     Country: "Switzerland",
-//     "Life expectancy": 83.4,
-//     GDP: 89899.8424,
-//     Population: 8282396,
-//   },
-//   {
-//     Country: "Tajikistan",
-//     "Life expectancy": 69.7,
-//     GDP: 918.6771543,
-//     Population: 8548651,
-//   },
-//   {
-//     Country: "Ukraine",
-//     "Life expectancy": 71.3,
-//     GDP: 2124.662666,
-//     Population: 4515429,
-//   },
-//   {
-//     Country: "Uruguay",
-//     "Life expectancy": 77,
-//     GDP: 15524.84247,
-//     Population: 3431552,
-//   },
-//   {
-//     Country: "Zimbabwe",
-//     "Life expectancy": 67,
-//     GDP: 118.69383,
-//     Population: 15777451,
-//   },
-// ];
-
 
 const GoogleMap = () => {
   const googleMapRef = useRef<HTMLDivElement>(null);
@@ -211,16 +82,60 @@ const GoogleMap = () => {
   return <div id="google-map" ref={googleMapRef} style={{ height: '500px', width: '100%' }} />;
  };
 
-
-// some bs data i made up
+// data queried from database
 const startupsByYear = [
-  { year: "2018", startups: 120 },
-  { year: "2019", startups: 150 },
-  { year: "2020", startups: 180 },
-  { year: "2021", startups: 200 },
-  { year: "2022", startups: 230 },
-  { year: "2023", startups: 250 },
+  { year: "2019", "Start-ups": 274 },
+  { year: "2020", "Start-ups": 540 },
+  { year: "2021", "Start-ups": 730 },
+  { year: "2022", "Start-ups": 783 },
+  { year: "2023", "Start-ups": 824 },
 ];
+const startupsByIndustry = [
+  { industry: "Healthcare", value: 23.2 },
+  { industry: "FinTech", value: 19.0 },
+  { industry: "Enterprise Software", value: 15.2 },
+  { industry: "Security", value: 9.8 },
+  { industry: "Transportation", value: 7.0 },
+  { industry: "Media", value: 6.3 },
+  { industry: "Other", value: 19.5 },
+];
+
+const cardData = [
+  {
+    name: "Ecosystem Value",
+    stat: "$56 bn",
+    change: "62% above global avg",
+    changeType: "positive",
+  },
+  {
+    name: "Average Startups per Year",
+    stat: "2400",
+    change: "20% above national avg",
+    changeType: "positive",
+  },
+  {
+    name: "Minority Startups",
+    stat: "67",
+    change: "45% above national avg",
+    changeType: "positive",
+  },
+  {
+    name: "Average Software Engineer Salary",
+    stat: "$104k",
+    change: "+9.4% YoY",
+    changeType: "positive",
+  },
+];
+
+const ecosystemValueByCity = [
+  { city: "Austin", "Ecosystem Value": 70 },
+  { city: "Atlanta", "Ecosystem Value": 56 },
+  { city: "Dallas", "Ecosystem Value": 44 },
+  { city: "Monteal", "Ecosystem Value": 38 },
+  { city: "Charlotte", "Ecosystem Value": 11 },
+];
+
+// in progress
 
 const totalFundingByYear = [
   { date: "Jan 23", "Total Funding": 500, "Pre-Seed Funding": 100 },
@@ -256,51 +171,9 @@ const statusColor: { [key: string]: string } = {
   "Pre-Seed Funding": "bg-violet-500",
 };
 
-const startupsByIndustry = [
-  { industry: "Technology", value: 40 },
-  { industry: "Healthcare", value: 30 },
-  { industry: "Finance", value: 15 },
-  { industry: "Education", value: 10 },
-  { industry: "Other", value: 5 },
-];
-
 const percentFormatter = (number: number) => {
   return number + "%";
 };
-
-const startupsBySize = [
-  { size: "1-10", startups: 150 },
-  { size: "11-50", startups: 100 },
-  { size: "51-200", startups: 50 },
-  { size: "201+", startups: 25 },
-];
-
-const cardData = [
-  {
-    name: "Ecosystem Value",
-    stat: "$200.5 bn",
-    change: "+12.5%",
-    changeType: "positive",
-  },
-  {
-    name: "Total Funding Rounds",
-    stat: "2400",
-    change: "+1.8%",
-    changeType: "positive",
-  },
-  {
-    name: "New Jobs Created",
-    stat: "369",
-    change: "+19.7%",
-    changeType: "positive",
-  },
-  {
-    name: "Average Software Engineer Salary",
-    stat: "$104k",
-    change: "+19.7%",
-    changeType: "positive",
-  },
-];
 
 const ScatterChartUsageExampleWithClickEvent = () => {
   const data = useContext(DataContext);
@@ -404,7 +277,7 @@ const App: React.FC = () => {
                 <Link to="/companies">Companies</Link>
               </li>
               <li>
-                <Link to="/annual-report">Annual Report</Link>
+                <Link to="/annual-report">Why Atlanta?</Link>
               </li>
               <li>
                 <Link to="/about-us">About Us</Link>
@@ -455,22 +328,22 @@ const App: React.FC = () => {
                       <LineChart
                         data={startupsByYear}
                         index="year"
-                        categories={["startups"]}
+                        categories={["Start-ups"]}
                       />
-                      <div className="text-center mt-2 text-white">Year</div>
+                      <div className="text-center mt-2 text-cyan-200">Year</div>
                     </div>
 
                     <div>
                       <h2 className="text-xl font-bold mb-2 text-cyan-200">
-                        Startups by Size
+                        <p>Ecosystem Value by Cities (in billions)</p>
                       </h2>
                       <BarChart
-                        data={startupsBySize}
-                        index="size"
-                        categories={["startups"]}
+                        data={ecosystemValueByCity}
+                        index="city"
+                        categories={["Ecosystem Value"]}
                       />
-                      <div className="text-center mt-2 text-white">
-                        Company Size
+                      <div className="text-center mt-2 text-cyan-200">
+                        Peer Cities
                       </div>
                     </div>
 
@@ -524,9 +397,11 @@ const App: React.FC = () => {
                           valueFormatter={percentFormatter}
                           colors={[
                             "blue",
+                            "yellow",
+                            "red",
                             "cyan",
                             "indigo",
-                            "violet",
+                            "green",
                             "fuchsia",
                           ]}
                           className="mt-2 h-60"
@@ -536,17 +411,21 @@ const App: React.FC = () => {
                       <div>
                         <Legend
                           categories={[
-                            "Technology",
                             "Healthcare",
-                            "Finance",
-                            "Education",
+                            "FinTech",
+                            "Enterprise",
+                            "Security",
+                            "Transportation",
+                            "Media",
                             "Other",
                           ]}
                           colors={[
                             "blue",
+                            "yellow",
+                            "red",
                             "cyan",
                             "indigo",
-                            "violet",
+                            "green",
                             "fuchsia",
                           ]}
                           className="max-w-xs text-center"
