@@ -297,7 +297,7 @@ export default function Companies() {
                               : handleIndustrySearchChange
                           }
                           onClick={(e) => e.stopPropagation()}
-                          className="mt-2 p-1 text-sm w-full"
+                          className="mt-2 p-1 text-sm w-full text-black"
                         />
                       ) : (
                         <div style={{ height: "38px" }} />
@@ -322,30 +322,30 @@ export default function Companies() {
         </TableBody>
       </Table>
       <div className="mt-10 flex items-center justify-between">
-        <p className="text-tremor-default tabular-nums text-tremor-content dark:text-dark-tremor-content">
+        <p className="text-tremor-default tabular-nums text-dark-tremor-content">
           Page{" "}
-          <span className="font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong">{`${
+          <span className="font-medium text-dark-tremor-content-strong">{`${
             table.getState().pagination.pageIndex + 1
           }`}</span>{" "}
           of
-          <span className="font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong">
+          <span className="font-medium text-dark-tremor-content-strong">
             {" "}
             {`${table.getPageCount()}`}
           </span>
         </p>
-        <div className="inline-flex items-center rounded-tremor-full shadow-tremor-input ring-1 ring-inset ring-tremor-ring dark:shadow-dark-tremor-input dark:ring-dark-tremor-ring">
+        <div className="inline-flex items-center rounded-tremor-full ring-1 ring-inset shadow-dark-tremor-input ring-dark-tremor-ring">
           <Button
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
             <span className="sr-only">Previous</span>
             <RiArrowLeftSLine
-              className="h-5 w-5 text-tremor-content-emphasis group-hover:text-tremor-content-strong dark:text-dark-tremor-content-emphasis group-hover:dark:text-dark-tremor-content-strong"
+              className="h-5 w-5  text-dark-tremor-content-emphasis group-hover:text-dark-tremor-content-strong"
               aria-hidden={true}
             />
           </Button>
           <span
-            className="h-5 border-r border-tremor-border dark:border-dark-tremor-border"
+            className="h-5 border-r border-dark-tremor-border"
             aria-hidden={true}
           />
           <Button
@@ -354,7 +354,7 @@ export default function Companies() {
           >
             <span className="sr-only">Next</span>
             <RiArrowRightSLine
-              className="h-5 w-5 text-tremor-content-emphasis group-hover:text-tremor-content-strong dark:text-dark-tremor-content-emphasis group-hover:dark:text-dark-tremor-content-strong"
+              className="h-5 w-5 text-dark-tremor-content-emphasis group-hover:text-dark-tremor-content-strong"
               aria-hidden={true}
             />
           </Button>

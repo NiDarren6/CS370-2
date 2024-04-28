@@ -31,28 +31,22 @@ body {
 
 /* Sub-Sector Styles */
 .sub-sector .sector {
-    background-color: #e8e8e8;
     margin-bottom: 1rem;
     padding: 1rem;
     border-radius: 5px;
 }
 
-/* Reasons to Move Section */
 .reasons-to-move .reason {
-    background-color: #e8e8e8;
     margin-bottom: 1rem;
     padding: 1rem;
     border-radius: 5px;
 }
 
-/* Ecosystem Numbers & Highlights */
 .ecosystem-numbers, .highlights {
-    background-color: #e8e8e8;
     padding: 1rem;
     border-radius: 5px;
 }
 
-/* Titles */
 h1, h2, h3 {
     margin-bottom: 0.5rem;
 }
