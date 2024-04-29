@@ -28,36 +28,36 @@ const GoogleMap = () => {
   const googleMapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-  const initMap = async () => {
-    try {
-      const response = await fetch('/api/map');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const jsonData = await response.json();
-      if (!jsonData || jsonData.length === 0) {
-        throw new Error('No data received');
-      }
+    const initMap = async () => {
+      try {
+        const response = await fetch('/api/map');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonData = await response.json();
+        if (!jsonData || jsonData.length === 0) {
+          throw new Error('No data received');
+        }
 
 
-      const map = new google.maps.Map(googleMapRef.current!, {
-        center: { lat: 33.8505, lng: -84.3719 },
-        zoom: 11
-      });
-      const heatmapData = jsonData.map(item => new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude)));
-      console.log("Number of data points in heatmap:", heatmapData.length);
-      console.log(jsonData);
-     
-      new google.maps.visualization.HeatmapLayer({
-        data: heatmapData,
-        map: map,
-        radius: 70,
-        opacity: 0.8
-      });
-    } catch (error) {
-      console.error('Failed to load heatmap data:', error);
-    }
-  };
+        const map = new google.maps.Map(googleMapRef.current!, {
+          center: { lat: 33.8505, lng: -84.3719 },
+          zoom: 11
+        });
+        const heatmapData = jsonData.map(item => new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude)));
+        console.log("Number of data points in heatmap:", heatmapData.length);
+        console.log(jsonData);
+
+        new google.maps.visualization.HeatmapLayer({
+          data: heatmapData,
+          map: map,
+          radius: 70,
+          opacity: 0.8
+        });
+      } catch (error) {
+        console.error('Failed to load heatmap data:', error);
+      }
+    };
     const scriptId = 'google-maps-script';
     const existingScript = document.getElementById(scriptId) as HTMLScriptElement;
     if (!existingScript) {
@@ -80,7 +80,7 @@ const GoogleMap = () => {
     };
   }, []);
   return <div id="google-map" ref={googleMapRef} style={{ height: '500px', width: '100%' }} />;
- };
+};
 
 // data queried from database
 const startupsByYear = [
@@ -109,7 +109,7 @@ const cardData = [
     changeType: "positive",
   },
   {
-    name: "Average Startups per Year",
+    name: "Total Startups",
     stat: "2400",
     change: "20% above national avg",
     changeType: "positive",
