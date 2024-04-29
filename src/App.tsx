@@ -176,29 +176,50 @@ const percentFormatter = (number: number) => {
   return number + "%";
 };
 
+function getMedianValue(value) {
+  if (value && value.includes("-")) {
+    const parts = value.split("-").map((part) => parseFloat(part.trim()));
+    if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+      return (parts[0] + parts[1]) / 2;
+    }
+  }
+  return parseFloat(value);
+}
+
 const ScatterChartUsageExampleWithClickEvent = () => {
   const data = useContext(DataContext);
-  const [xAxis, setXAxis] = useState("totalFunding");
-  const [yAxis, setYAxis] = useState("launchYear");
-  const [size, setSize] = useState("amount");
-  //https://retool.com/blog/filtering-data-in-react-filter-map-and-for-loops - explanation on how to filter data
-  const updateChartData = (jsonData) => {
-    return jsonData
-      .filter(
-        (item) =>
-          item[xAxis] != null && item[yAxis] != null && item[size] != null
-      )
-      .map((item, index) => ({
-        ...item,
-        x: item[xAxis],
-        y: item[yAxis],
-        size: item[size] || 1,
-        uniqueKey: `point-${index}`,
-      }));
+  const [xAxis, setXAxis] = useState('amount');
+  const [yAxis, setYAxis] = useState('current_company_valuation');
+  const [size, setSize] = useState('total_rounds_number');
+  const label = {
+    amount: "Total Funding",
+    current_company_valuation: "Ecosystem Value",
+    total_rounds_number: "Funding Rounds",
+    launch_year: "Funding Year",
+    round_valuation_usd: "Round Evaluation",
+
   };
+  const updateChartData = (jsonData) => {
+    return jsonData.filter(item => 
+      item[xAxis] != null && item[yAxis] != null && item[size] != null
+    ).map((item, index) => {
+      const xValue = getMedianValue(item[xAxis].toString());
+      const yValue = getMedianValue(item[yAxis].toString());
+      const sizeValue = getMedianValue(item[size].toString()); 
+  
+      return {
+        ...item,
+        [label[xAxis]]: xValue, 
+        [label[yAxis]]: yValue,  
+        [label[size]]: sizeValue || 1, 
+        uniqueKey: `point-${index}`
+      };
+    });
+  };
+ 
+  const chartData = useMemo(() => data ? updateChartData(data) : [], [data, xAxis, yAxis, size]);
 
-  const chartData = data ? updateChartData(data) : [];
-
+  
   const axisOptions = {
     "Ecosystem Value": "current_company_valuation",
     "Funding Rounds": "total_rounds_number",
@@ -206,7 +227,7 @@ const ScatterChartUsageExampleWithClickEvent = () => {
     // "Number of Startups per Year": "numberOfStartups",
     // "Minority-founded Startups": "minorityStartups",
     // "Type of Startup": "startupType",
-    "Funding Year": "launch_year",
+    "Funding Year" : "launch_year",
     "Round Evaluation": "round_valuation_usd",
     // GDP: "GDP",
     // "Life expectancy": "Life expectancy",
@@ -214,8 +235,8 @@ const ScatterChartUsageExampleWithClickEvent = () => {
   };
 
   return (
-    <Card className="bg-slate-900 text-white">
-      <div style={{ marginBottom: 16 }}>
+    <Card>
+      <div style={{ marginBottom: 16, color: "white" }}>
         <label>X-axis:</label>
         <Select value={xAxis} onValueChange={setXAxis}>
           {Object.entries(axisOptions).map(([label, value]) => (
@@ -244,25 +265,30 @@ const ScatterChartUsageExampleWithClickEvent = () => {
         </Select>
       </div>
       <ScatterChart
-        className="-ml-2 mt-6 h-80 bg-slate-900"
+        className="-ml-2 mt-6 h-80"
         yAxisWidth={50}
+        // minXValue={0}
+        // maxXValue={100000000}
         data={chartData}
         category="name"
-        x={xAxis}
-        y={yAxis}
-        size={size}
+        x={label[xAxis]}
+        y={label[yAxis]}
+        size={label[size]}
+        autoMinXValue
         showOpacity={true}
         minYValue={0}
         showLegend={false}
-        valueFormatter={{
-          //   x: (amount) => `$${(amount / 1000).toFixed(1)}K`,
-          y: (amount) => `${amount / 100000} $`,
-          //   size: (amount) => `${(amount / 1000000).toFixed(1)}M people`,
-        }}
+        // valueFormatter={{
+        //   x: (amount) => `$${(amount / 1000).toFixed(1)}K`,
+        // y: (amount) => `${amount/100000} $`,
+        //   size: (amount) => `${(amount / 1000000).toFixed(1)}M people`,
+        // }}
       />
     </Card>
   );
-};
+}
+
+
 
 const App: React.FC = () => {
   return (
