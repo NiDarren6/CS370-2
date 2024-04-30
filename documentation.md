@@ -4,7 +4,8 @@
 
 The architecture of the CoA_Startup_Dashboard is depicted in the included diagram. Here is a breakdown of the main components and how they interact:
 
-![Architecture Diagram](https://ibb.co/DGvp9zV)
+![Architecture Diagram](https://github.com/NiDarren6/CoA_Startup_Dashboard/assets/105614327/94a225ec-5d5c-41e0-a99d-a73722c3d163)
+
 
 ##### 1. AWS Cloud
 - **Raw Data**: Data is stored in S3 buckets.
@@ -19,7 +20,8 @@ The architecture of the CoA_Startup_Dashboard is depicted in the included diagra
 
 ##### 3. Frontend
 - **React.js**: Powers the interactive UI of the dashboard.
-- **Hosted on Vercel**: Ensures scalable delivery of the frontend content.
+- **Hosted on [Vercel](https://vercel.com/)**: Ensures scalable delivery of the frontend content.
+- Vercel is a cloud platform designed to deploy front-end applications quickly and efficiently. Vercel streamlines deployment, providing automatic builds, previews, and production deployments linked directly from a Git repository. This integration facilitates continuous deployment and ensures that updates to the repository translate into live changes without requiring manual intervention.
 
 #### Installation
 To set up the environment for development:
