@@ -4,7 +4,8 @@
 
 The architecture of the CoA_Startup_Dashboard is depicted in the included diagram. Here is a breakdown of the main components and how they interact:
 
-![Architecture Diagram](https://github.com/NiDarren6/CoA_Startup_Dashboard/assets/105614327/94a225ec-5d5c-41e0-a99d-a73722c3d163)
+#### Architecture Diagram
+<img width="816" alt="Screenshot 2024-04-29 at 5 48 42 PM" src="https://github.com/NiDarren6/CoA_Startup_Dashboard/assets/105614327/5699291e-fd4a-4f06-8286-f1de2c67b270">
 
 
 ##### 1. AWS Cloud
