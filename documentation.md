@@ -42,5 +42,3 @@ For developers looking to contribute:
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
 4. Push to the branch (`git push origin feature/AmazingFeature`).
 5. Open a pull request.
-
-This technical documentation includes the architectural overview, setup, and contribution guidelines to aid developers in understanding and contributing to the project effectively.
