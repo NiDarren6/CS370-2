@@ -4,17 +4,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-// const urlencodedParser = bodyParser.urlencoded({ extended: false });
-
-// app.use(express.static('public'));
-
-
-
 const app = express();
 app.use(cors());
 app.use(express.json());
-// app.use(express.static('public'));
-
 
 const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
   user: process.env.REDSHIFT_USER,
@@ -23,11 +15,6 @@ const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
   password: process.env.REDSHIFT_PASSWORD,
   port: 5439,
 });
-
-// app.get('/', function (req, res) {
-// 	res.sendFile(path.join(__dirname, '..', 'index.html'));
-// });
-
 
 app.get('/api/company_page', async (req, res) => {
     try {
