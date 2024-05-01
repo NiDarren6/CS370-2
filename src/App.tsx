@@ -62,7 +62,7 @@ const GoogleMap = () => {
     const existingScript = document.getElementById(scriptId) as HTMLScriptElement;
     if (!existingScript) {
       const script = document.createElement('script');
-      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + process.env.GOOGLE_MAPS_API;
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap&libraries=visualization';
       script.id = scriptId;
       script.defer = true;
       script.async = true;
