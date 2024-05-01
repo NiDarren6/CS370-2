@@ -21,7 +21,7 @@ const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
   host: process.env.REDSHIFT_HOST,
   database: process.env.REDSHIFT_DATABASE,
   password: process.env.REDSHIFT_PASSWORD,
-  port: proccess.env.REDSHIFT_PORT,
+  port: 5439,
 });
 
 // app.get('/', function (req, res) {
