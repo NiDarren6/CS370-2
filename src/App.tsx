@@ -223,15 +223,9 @@ const ScatterChartUsageExampleWithClickEvent = () => {
   const axisOptions = {
     "Ecosystem Value": "current_company_valuation",
     "Funding Rounds": "total_rounds_number",
-    "Total Funding": "amount", // need to add this to master table
-    // "Number of Startups per Year": "numberOfStartups",
-    // "Minority-founded Startups": "minorityStartups",
-    // "Type of Startup": "startupType",
+    "Total Funding": "amount", 
     "Funding Year" : "launch_year",
     "Round Evaluation": "round_valuation_usd",
-    // GDP: "GDP",
-    // "Life expectancy": "Life expectancy",
-    // Population: "Population",
   };
 
   return (
@@ -278,11 +272,6 @@ const ScatterChartUsageExampleWithClickEvent = () => {
         showOpacity={true}
         minYValue={0}
         showLegend={false}
-        // valueFormatter={{
-        //   x: (amount) => `$${(amount / 1000).toFixed(1)}K`,
-        // y: (amount) => `${amount/100000} $`,
-        //   size: (amount) => `${(amount / 1000000).toFixed(1)}M people`,
-        // }}
       />
     </Card>
   );
