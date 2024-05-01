@@ -62,7 +62,7 @@ const GoogleMap = () => {
     const existingScript = document.getElementById(scriptId) as HTMLScriptElement;
     if (!existingScript) {
       const script = document.createElement('script');
-      script.src = process.env.GOOGLE_MAPS_API;
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD-cQkVQiCzurIlUsXMx8ewsTmlPqwcmqQ&callback=initMap&libraries=visualization';
       script.id = scriptId;
       script.defer = true;
       script.async = true;
@@ -223,9 +223,15 @@ const ScatterChartUsageExampleWithClickEvent = () => {
   const axisOptions = {
     "Ecosystem Value": "current_company_valuation",
     "Funding Rounds": "total_rounds_number",
-    "Total Funding": "amount", 
+    "Total Funding": "amount", // need to add this to master table
+    // "Number of Startups per Year": "numberOfStartups",
+    // "Minority-founded Startups": "minorityStartups",
+    // "Type of Startup": "startupType",
     "Funding Year" : "launch_year",
     "Round Evaluation": "round_valuation_usd",
+    // GDP: "GDP",
+    // "Life expectancy": "Life expectancy",
+    // Population: "Population",
   };
 
   return (
@@ -272,6 +278,11 @@ const ScatterChartUsageExampleWithClickEvent = () => {
         showOpacity={true}
         minYValue={0}
         showLegend={false}
+        // valueFormatter={{
+        //   x: (amount) => `$${(amount / 1000).toFixed(1)}K`,
+        // y: (amount) => `${amount/100000} $`,
+        //   size: (amount) => `${(amount / 1000000).toFixed(1)}M people`,
+        // }}
       />
     </Card>
   );
