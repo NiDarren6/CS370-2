@@ -18,10 +18,10 @@ app.use(express.json());
 
 const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
   user: process.env.REDSHIFT_USER,
-  host: 'coa-final-cluster.cdcmyat6z0fm.us-east-1.redshift.amazonaws.com',
-  database: 'dev',
-  password: 'CoADashboard#!ATL1',
-  port: 5439,
+  host: process.env.REDSHIFT_HOST,
+  database: process.env.REDSHIFT_DATABASE,
+  password: process.env.REDSHIFT_PASSWORD,
+  port: proccess.env.REDSHIFT_PORT,
 });
 
 // app.get('/', function (req, res) {
