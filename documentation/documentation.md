@@ -37,7 +37,8 @@ npm install
 #### Running Locally
 To run the dashboard locally:
 ```bash
-npm start
+npm run build
+npm run dev
 ```
 
 #### Contributing
