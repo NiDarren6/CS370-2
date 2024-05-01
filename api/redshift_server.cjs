@@ -17,7 +17,7 @@ app.use(express.json());
 
 
 const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
-  user: 'coa_datalabs',
+  user: process.env.REDSHIFT_USER,
   host: 'coa-final-cluster.cdcmyat6z0fm.us-east-1.redshift.amazonaws.com',
   database: 'dev',
   password: 'CoADashboard#!ATL1',
