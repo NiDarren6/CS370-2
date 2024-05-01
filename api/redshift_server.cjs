@@ -1,11 +1,8 @@
 const express = require('express');
 const { Pool } = require('pg');
-const cors = require('cors');
-const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
-app.use(cors());
 app.use(express.json());
 
 const pool = new Pool({ //NEED TO SWITCH TO ENVIRONMENTAL VARIABLES
