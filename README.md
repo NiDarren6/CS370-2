@@ -9,6 +9,7 @@ For our semester-long project, our team decided to team up with the City of Atla
 
 ## Installation Instructions
 Visit the dashboard at: [https://co-a-startup-dashboard-r4t2-2.vercel.app/](https://co-a-startup-dashboard-r4t2-2.vercel.app/)
+
 To clone the repo, use git clone https://github.com/NiDarren6/CoA_Startup_Dashboard - Then run npm build then npm run in terminal
 
 ## Usage
